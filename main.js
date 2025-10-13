@@ -115,5 +115,3 @@ document.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowLeft') showPrevImage();
     if (e.key === 'Escape') closeLightbox();
 });
-
-
