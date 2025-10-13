@@ -49,22 +49,6 @@ body.dark-mode {
 /* =======================
    Header / Navbar - Frosted
 ======================= */
-header {
-    background: rgba(255, 255, 255, 0.5); /* frosted light mode */
-    backdrop-filter: blur(15px);
-    border-bottom: 1px solid rgba(0,0,0,0.1);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    width: 100%;
-    transition: background 0.3s;
-}
-
-body.dark-mode header {
-    background: rgba(18, 18, 18, 0.5); /* frosted dark mode */
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-}
-
 header .container {
     display: flex;
     justify-content: space-between;
@@ -187,40 +171,26 @@ nav .hamburger {
     margin-left: 15px;
 }
 
-/* Responsive Navbar */
+/* =======================
+   Mobile Hamburger Fix
+======================= */
 @media (max-width: 768px) {
-    nav {
-        justify-content: flex-end;
-    }
     nav ul {
         flex-direction: column;
         position: absolute;
-        top: 100%;
+        top: 60px;
         right: 0;
-        background: rgba(255,255,255,0.5);
+        background: rgba(255,255,255,0.9);
         backdrop-filter: blur(15px);
-        width: 220px;
+        width: 100%;
         display: none;
         gap: 0;
         padding: 10px 0;
-        border-radius: 8px;
-        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
     }
     body.dark-mode nav ul {
-        background: rgba(18,18,18,0.5);
-    }
-    nav ul.show {
-        display: flex;
-    }
-    nav ul li a,
-    nav ul li .contact-btn {
-        padding: 12px 20px;
-    }
-    nav .hamburger {
-        display: block;
+        background: rgba(18,18,18,0.9);
     }
 }
-
 /* =======================
    About Hero Section
 ======================= */
@@ -351,4 +321,5 @@ footer .social a {
 }
 
 footer .social a:hover { color:#1f1fff; }
+
 
