@@ -1,0 +1,327 @@
+/* =======================
+   Projects styles
+======================= */
+
+:root {
+  --accent: #1f1fff;
+  --card-bg: #f5f5f5;
+  --text: #333;
+}
+
+/* =======================
+   Dark Mode
+======================= */
+body.dark-mode {
+  background-color: #0d0d0d;
+  color: #fff;
+}
+
+body.dark-mode header,
+body.dark-mode footer {
+  background: #0d0d0d;
+}
+
+body.dark-mode .projects-hero {
+  background: #111;
+  color: #fff;
+}
+
+body.dark-mode .filter-btn {
+  border-color: rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
+
+body.dark-mode .filter-btn.active {
+  color: var(--accent);
+  border-color: rgba(31, 31, 255, 0.3);
+  box-shadow: 0 8px 24px rgba(31, 31, 255, 0.1);
+}
+
+body.dark-mode .project-card {
+  background: #1b1b1b;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+}
+
+body.dark-mode .project-body h3 {
+  color: #fff;
+}
+
+body.dark-mode .project-body p {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+body.dark-mode footer p {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* =======================
+   Hero
+======================= */
+.projects-hero {
+  text-align: center;
+  padding: 100px 0 40px;
+  background: var(--card-bg);
+  color: var(--text);
+}
+
+.projects-hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.projects-hero p {
+  font-size: 1.1rem;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+/* =======================
+   Filter Bar
+======================= */
+.projects-filter {
+  padding: 20px 0;
+}
+
+.filter-bar {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  background: transparent;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  padding: 8px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  color: var(--text);
+  font-weight: 500;
+  transition: all 0.18s ease;
+}
+
+.filter-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+}
+
+.filter-btn.active {
+  color: var(--accent);
+  border-color: rgba(31, 31, 255, 0.18);
+  box-shadow: 0 8px 24px rgba(31, 31, 255, 0.06);
+  transform: none;
+}
+
+/* =======================
+   Gallery Grid
+======================= */
+.project-gallery {
+  padding: 60px 0 100px;
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 28px;
+}
+
+/* =======================
+   Project Card
+======================= */
+.project-card {
+  background: var(--card-bg);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+  transition: transform 0.28s ease, box-shadow 0.28s ease;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.project-card:focus {
+  outline: 3px solid rgba(31, 31, 255, 0.12);
+  outline-offset: 4px;
+}
+
+.project-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.12);
+}
+
+/* Thumbnail */
+.project-thumb {
+  width: 100%;
+  height: 0;
+  padding-bottom: 56%;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.02), rgba(0, 0, 0, 0.03));
+}
+
+.project-thumb img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.project-card:hover .project-thumb img {
+  transform: scale(1.06);
+}
+
+/* Card Body */
+.project-body {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.project-body h3 {
+  font-size: 1.15rem;
+  margin: 0;
+  color: var(--text);
+}
+
+.project-body p {
+  margin: 0;
+  color: rgba(0, 0, 0, 0.65);
+  font-size: 0.95rem;
+}
+
+/* =======================
+   Lightbox
+======================= */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  padding: 20px;
+}
+
+.lightbox-content {
+  position: relative;
+  width: 100%;
+  max-width: 1100px;
+  max-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+}
+
+.lightbox-content .lb-img {
+  max-width: 100%;
+  max-height: 90vh;
+  object-fit: contain;
+  border-radius: 6px;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Arrows */
+.lightbox-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 44px;
+  color: #fff;
+  cursor: pointer;
+  user-select: none;
+  padding: 8px 12px;
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
+  transition: background 0.15s ease, transform 0.12s ease;
+}
+
+.lightbox-arrow:hover {
+  background: rgba(0, 0, 0, 0.45);
+  transform: translateY(-50%) scale(1.03);
+}
+
+.lightbox-arrow.left {
+  left: 12px;
+}
+
+.lightbox-arrow.right {
+  right: 12px;
+}
+
+/* Close */
+.lightbox-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  font-size: 32px;
+  color: #fff;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+}
+
+/* Thumbnails */
+.lightbox-thumbs {
+  display: flex;
+  gap: 8px;
+  overflow: auto;
+  padding-top: 14px;
+  justify-content: center;
+}
+
+.lightbox-thumbs img {
+  width: 90px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 6px;
+  opacity: 0.7;
+  cursor: pointer;
+  transition: opacity 0.12s ease, transform 0.12s ease;
+}
+
+.lightbox-thumbs img.active {
+  opacity: 1;
+  transform: scale(1.03);
+}
+
+/* =======================
+   Responsive
+======================= */
+@media (max-width: 768px) {
+  .lightbox-content {
+    max-width: 100%;
+    padding: 8px;
+  }
+
+  .lightbox-arrow {
+    font-size: 32px;
+    padding: 6px;
+  }
+
+  .lightbox-thumbs img {
+    width: 72px;
+    height: 48px;
+  }
+}
+
+@media (max-width: 520px) {
+  .project-grid {
+    gap: 18px;
+    grid-template-columns: 1fr;
+  }
+
+  .filter-bar {
+    gap: 8px;
+    padding: 0 6px;
+  }
+}
+
+

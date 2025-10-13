@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Silindile Kunene Portfolio - Projects</title>
+  <link rel="stylesheet" href="global.css">
+  <link rel="stylesheet" href="projects.css">
+</head>
+<body>
+   <!-- Header -->
+   <header>
+    <div class="container">
+      <div class="logo">Silindile Kunene</div>
+      <div class="hamburger">&#9776;</div>
+      <nav>
+        <ul id="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="projects.html" class="active" >Projects</a></li>
+          <li><a href="contact.html" class="contact-btn">Contact</a></li>
+        </ul>
+      </nav>
+      <label class="toggle-btn">
+        <input type="checkbox" id="dark-mode-toggle">
+        <span class="slider"></span>
+      </label>
+    </div>
+  </header>
+  
+
+  <!-- Hero -->
+  <section class="projects-hero">
+    <div class="container">
+      <h1>My Projects</h1>
+      <p>Some of my recent works and designs — filter by category to explore.</p>
+    </div>
+  </section>
+
+  <!-- Filter Bar -->
+  <section class="projects-filter">
+    <div class="container">
+      <div class="filter-bar" role="tablist" aria-label="Project filters">
+        <button class="filter-btn active" data-filter="all" aria-pressed="true">All</button>
+        <button class="filter-btn" data-filter="branding" aria-pressed="false">Branding</button>
+        <button class="filter-btn" data-filter="web" aria-pressed="false">Web Design</button>
+        <button class="filter-btn" data-filter="print" aria-pressed="false">Print</button>
+        <button class="filter-btn" data-filter="social" aria-pressed="false">Social Media</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section class="project-gallery">
+    <div class="container">
+      <div class="project-grid">
+
+        <!-- Example project card with multiple images (branding) -->
+        <article class="project-card" data-category="branding" tabindex="0" aria-label="Open Nelo Pharmary project">
+          <div class="project-thumb">
+            <img src="Images/Nelomed pharmary - Logo_Logo.jpg" alt="Nelo Pharmary thumbnail">
+          </div>
+          <div class="project-body">
+            <h3>Nelo Pharmary</h3>
+            <p>Community-focused brand identity with bold, trust-building visuals.</p>
+          </div>
+          <!-- hidden gallery images for lightbox -->
+          <div class="project-images" aria-hidden="true" style="display:none">
+            <img src="Images/Nelomed pharmary - Logo_Logo.jpg" alt="">
+            <img src="Images/Nelomed_pharmacy_2.jpg" alt="">
+            <img src="Images/Nelomed_pharmacy_3.jpg" alt="">
+          </div>
+        </article>
+
+        <!-- Example project card (social media) -->
+        <article class="project-card" data-category="social" tabindex="0" aria-label="Open Momo's Hair Corner project">
+          <div class="project-thumb">
+            <img src="Images/Momo's Hair SalonFull Logo-100.jpg" alt="Momo's Hair Corner thumbnail">
+          </div>
+          <div class="project-body">
+            <h3>Momo's Hair Corner</h3>
+            <p>Playful kid-friendly salon visuals and social templates.</p>
+          </div>
+          <div class="project-images" style="display:none">
+            <img src="Images/Momos_1.jpg" alt="">
+            <img src="Images/Momos_2.jpg" alt="">
+          </div>
+        </article>
+
+        <!-- Example project card (branding) -->
+        <article class="project-card" data-category="branding" tabindex="0" aria-label="Open Good Governance project">
+          <div class="project-thumb">
+            <img src="Images/Good Governance_Logo-01.jpg" alt="Good Governance thumbnail">
+          </div>
+          <div class="project-body">
+            <h3>Good Governance</h3>
+            <p>Clean, modern identity to communicate leadership and clarity.</p>
+          </div>
+          <div class="project-images" style="display:none">
+            <img src="Images/GoodGovernance_1.jpg" alt="">
+            <img src="Images/GoodGovernance_2.jpg" alt="">
+          </div>
+        </article>
+
+        <!-- Example project card (web) -->
+        <article class="project-card" data-category="web" tabindex="0" aria-label="Open Ubuntu-Botho Financial Services project">
+          <div class="project-thumb">
+            <img src="Images/Ubuntu-Botho Financial Services_Logo .jpg" alt="Ubuntu-Botho thumbnail">
+          </div>
+          <div class="project-body">
+            <h3>Ubuntu-Botho Financial Services</h3>
+            <p>Website and visual system for a modern finance brand.</p>
+          </div>
+          <div class="project-images" style="display:none">
+            <img src="Images/Ubuntu_1.jpg" alt="">
+            <img src="Images/Ubuntu_2.jpg" alt="">
+          </div>
+        </article>
+
+        <!-- Add more project-cards below as needed (set proper data-category) -->
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Lightbox (will be created dynamically by JS) -->
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Silindile Kunene. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
