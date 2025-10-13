@@ -17,7 +17,7 @@
 ======================= */
 body.dark-mode {
   --bg-color: #121212;
-  --text-color: #f0f0f0;
+  --text-color: #ffffff;
   --accent-color: #66aaff;
   --card-bg: #1e1e1e;
   --footer-bg: #000;
@@ -70,6 +70,7 @@ header .container {
     justify-content: space-between;
     align-items: center;
     padding: 15px 0;
+    position: relative;
 }
 
 .logo {
@@ -138,13 +139,24 @@ nav .hamburger {
 
 /* Responsive Navbar */
 @media (max-width: 768px) {
-    nav {
-        justify-content: flex-end;
+    header .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
     }
+
+    nav {
+        display: flex;
+        flex: 1;
+        justify-content: center;
+        position: relative;
+    }
+
     nav ul {
         flex-direction: column;
         position: absolute;
-        top: 100%;
+        top: 60px;
         right: 0;
         background: rgba(255,255,255,0.5);
         backdrop-filter: blur(15px);
@@ -155,18 +167,33 @@ nav .hamburger {
         border-radius: 8px;
         box-shadow: 0 10px 25px rgba(0,0,0,0.1);
     }
+
     body.dark-mode nav ul {
         background: rgba(18,18,18,0.5);
     }
+
     nav ul.show {
         display: flex;
     }
+
     nav ul li a,
     nav ul li .contact-btn {
         padding: 12px 20px;
     }
+
     nav .hamburger {
         display: block;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+        top: 50%;
+    }
+
+    .toggle-btn {
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
     }
 }
 
@@ -186,3 +213,7 @@ footer .social a {
     text-decoration: none;
     transition: color 0.3s;
 }
+
+
+
+
