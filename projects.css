@@ -1,0 +1,310 @@
+/* =======================
+   Projects styles
+======================= */
+
+:root {
+  --accent: #1f1fff;
+  --card-bg: #f5f5f5;
+  --text: #333;
+}
+
+/* =======================
+   Dark Mode
+======================= */
+body.dark-mode {
+  background-color: #0d0d0d;
+  color: #fff;
+}
+
+body.dark-mode header,
+body.dark-mode footer {
+  background: #0d0d0d;
+}
+
+body.dark-mode .projects-hero {
+  background: #111;
+  color: #fff;
+}
+
+body.dark-mode .projects-hero p {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+body.dark-mode .filter-btn {
+  border-color: rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
+
+body.dark-mode .filter-btn.active {
+  color: var(--accent);
+  border-color: rgba(31, 31, 255, 0.3);
+  box-shadow: 0 8px 24px rgba(31, 31, 255, 0.1);
+}
+
+body.dark-mode .project-card {
+  background: #1b1b1b;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+}
+
+body.dark-mode .project-body h3 {
+  color: #fff;
+}
+
+body.dark-mode .project-body p {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+body.dark-mode footer p {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* =======================
+   Hero
+======================= */
+.projects-hero {
+  text-align: center;
+  padding: 100px 0 40px;
+  background: var(--card-bg);
+  color: var(--text);
+}
+
+.projects-hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.projects-hero p {
+  font-size: 1.1rem;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+/* =======================
+   Filter Bar
+======================= */
+.projects-filter {
+  padding: 20px 0;
+}
+
+.filter-bar {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  background: transparent;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  padding: 8px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  color: var(--text);
+  font-weight: 500;
+  transition: all 0.18s ease;
+}
+
+.filter-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+}
+
+.filter-btn.active {
+  color: var(--accent);
+  border-color: rgba(31, 31, 255, 0.18);
+  box-shadow: 0 8px 24px rgba(31, 31, 255, 0.06);
+  transform: none;
+}
+
+/* =======================
+   Gallery Grid
+======================= */
+.project-gallery {
+  padding: 60px 0 100px;
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 28px;
+}
+
+/* =======================
+   Project Card
+======================= */
+.project-card {
+  background: var(--card-bg);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+  transition: transform 0.28s ease, box-shadow 0.28s ease;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.project-card:focus {
+  outline: 3px solid rgba(31, 31, 255, 0.12);
+  outline-offset: 4px;
+}
+
+.project-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.12);
+}
+
+/* Thumbnail */
+.project-thumb {
+  width: 100%;
+  height: 0;
+  padding-bottom: 56%;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.02), rgba(0, 0, 0, 0.03));
+}
+
+.project-thumb img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.project-card:hover .project-thumb img {
+  transform: scale(1.06);
+}
+
+/* Card Body */
+.project-body {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.project-body h3 {
+  font-size: 1.15rem;
+  margin: 0;
+  color: var(--text);
+}
+
+.project-body p {
+  margin: 0;
+  color: rgba(0, 0, 0, 0.65);
+  font-size: 0.95rem;
+}
+
+/* =======================
+   Lightbox Styles
+======================= */
+.lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.lightbox-content {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 90%;
+  max-height: 80%;
+}
+
+.lb-img {
+  max-width: 80vw;
+  max-height: 80vh;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(255,255,255,0.2);
+}
+
+.lightbox-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 3rem;
+  color: white;
+  cursor: pointer;
+  user-select: none;
+  padding: 10px;
+  transition: 0.3s;
+}
+
+.lightbox-arrow:hover {
+  color: #1f1fff;
+}
+
+.lightbox-arrow.left { left: 5%; }
+.lightbox-arrow.right { right: 5%; }
+
+.lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 2rem;
+  color: white;
+  cursor: pointer;
+  user-select: none;
+  transition: 0.3s;
+}
+
+.lightbox-close:hover {
+  color: #1f1fff;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .lb-img {
+    max-width: 95vw;
+    max-height: 75vh;
+  }
+  .lightbox-arrow {
+    font-size: 2rem;
+  }
+}
+
+/* =======================
+   Footer
+======================= */
+footer {
+  background: #333;
+  color: #fff;
+  padding: 30px 0;
+  text-align: center;
+}
+
+footer p {
+  margin-bottom: 16px;
+  font-size: 0.95rem;
+}
+
+footer .social {
+  display: flex;
+  justify-content: center;
+  gap: 26px;
+}
+
+footer .social a img {
+  width: 42px;
+  height: 42px;
+  transition: transform 0.3s, filter 0.3s;
+  filter: invert(33%) sepia(94%) saturate(6131%) hue-rotate(219deg) brightness(97%) contrast(101%);
+}
+
+footer .social a:hover img {
+  transform: scale(1.2);
+  filter: invert(33%) sepia(94%) saturate(6131%) hue-rotate(219deg) brightness(120%) contrast(101%);
+}
