@@ -64,18 +64,17 @@ header {
     font-weight: 700; 
   }
 
-/* Logo link color */
+/* Force logo color based on theme */
 .logo {
-  text-decoration: none;
-  color: #000; /* black for light mode */
+  color: #000 !important; /* black in light mode */
   font-weight: bold;
   font-size: 1.5rem;
+  text-decoration: none;
   transition: color 0.3s ease;
 }
 
-/* Change logo color in dark mode */
 body.dark-mode .logo {
-  color: #fff; /* white for dark mode */
+  color: #fff !important; /* white in dark mode */
 }
 
   .hamburger {
@@ -337,5 +336,6 @@ body.dark-mode .logo {
     height: 32px;
   }
 }
+
 
 
