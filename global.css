@@ -78,7 +78,6 @@ body.dark-mode .logo {
   color: #fff; /* white for dark mode */
 }
 
-
   .hamburger {
     display: none; /* only on mobile */
     font-size: 2rem;
@@ -338,4 +337,5 @@ body.dark-mode .logo {
     height: 32px;
   }
 }
+
 
