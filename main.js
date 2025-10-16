@@ -160,6 +160,34 @@ function addVolumeControl() {
 }
 
 // ==============================
+// TESTIMONIALS ANIMATION
+// ==============================
+const testimonials = document.querySelectorAll('.testimonial');
+
+const observer = new IntersectionObserver((entries, observer) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.2 });
+
+testimonials.forEach(t => observer.observe(t));
+
+// ==============================
+// OPTIONAL DARK MODE TOGGLE
+// ==============================
+// (Only needed if your site doesn't already handle this)
+const toggle = document.querySelector('#darkModeToggle'); // Add a button with this ID if you want
+
+if (toggle) {
+  toggle.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+  });
+}
+
+// ==============================
 // FOOTER INTERACTIVITY
 // ==============================
 
@@ -180,3 +208,4 @@ footerIcons.forEach(icon => {
         icon.style.transform = 'scale(1)';
     });
 });
+
