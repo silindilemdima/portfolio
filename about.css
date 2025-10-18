@@ -1,0 +1,224 @@
+/* =======================
+   Global Reset
+======================= */
+* { 
+    margin:0; 
+    padding:0; 
+    box-sizing:border-box; 
+}
+
+body { 
+    font-family:"Space Grotesk", sans-serif; 
+    line-height:1.6; 
+    color:var(--text-color); 
+    background-color:var(--bg-color); 
+    transition: background-color 0.3s, color 0.3s; 
+}
+
+.container { 
+    width:90%; 
+    max-width:1200px; 
+    margin:0 auto; 
+}
+
+/* =======================
+   Light & Dark Mode Variables
+======================= */
+:root {
+    --bg-color: #ffffff;
+    --text-color: #333333;
+    --accent-color: #1f1fff;
+    --card-bg: #f5f5f5;
+    --footer-bg: #bbb;
+    --footer-text: #333;
+    --hero-bg: linear-gradient(135deg, #ffffff);
+    --hero-text-color: #121212;
+}
+
+body.dark-mode {
+    --bg-color: #121212;
+    --text-color: #f0f0f0;
+    --accent-color: #1f1fff;
+    --card-bg: #1e1e1e;
+    --footer-bg: #000;
+    --footer-text: #bbb;
+    --hero-bg: linear-gradient(135deg, #12121212);
+    --hero-text-color: #f0f0f0;
+}
+
+/* =======================
+   About Hero Section
+======================= */
+.about-hero {
+    background: var(--card-bg);
+    text-align: center;
+    padding: 120px 0 60px 0;
+}
+
+.about-hero h1 { font-size: 3rem; margin-bottom: 20px; }
+.about-hero p { font-size: 1.25rem; }
+
+/* =======================
+   About Me Section
+======================= */
+.about-me {
+    background: var(--card-bg);
+    color: var(--text-color);
+    padding: 80px 0;
+}
+
+.about-content {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    flex-wrap: wrap;
+}
+
+.about-text { flex: 1; }
+
+.about-text h2 { font-size: 2rem; margin-bottom: 20px; }
+
+.about-text p {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.about-text .btn {
+    padding: 12px 30px;
+    background: #1f1fff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 30px;
+    transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
+}
+
+.about-text .btn:hover {
+    transform: translateY(-2px) scale(1.05);
+    background: #fff;
+    color: #1f1fff;
+}
+
+.about-image { 
+    flex: 1; 
+    text-align: center; 
+}
+
+/* === GRADIENT FRAME AROUND RECTANGULAR IMAGE === */
+.profile-frame {
+    position: relative;
+    display: inline-block;
+    padding: 6px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #1f1fff, #6a11cb, #6a11cb, #54fbdc);
+    background-size: 300% 300%;
+    animation: gradientRotate 6s ease infinite;
+}
+
+.profile-frame img {
+    display: block;
+    width: 100%;
+    max-width: 400px;
+    border-radius: 10px; /* Keep original shape */
+    object-fit: cover;
+    border: 4px solid #fff; /* inner white border */
+}
+
+/* Optional subtle animation */
+@keyframes gradientRotate {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@media (max-width: 768px) {
+    .about-content {
+        flex-direction: column-reverse;
+        text-align: center;
+        gap: 30px;
+    }
+
+    .about-image img { 
+        max-width: 300px; 
+    }
+}
+
+/* =======================
+   My Skills Section
+======================= */
+.my-skills {
+    margin-top: 60px;
+    text-align: center;
+}
+
+.my-skills h3 { font-size: 1.8rem; margin-bottom: 40px; }
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 30px;
+    justify-items: center;
+    align-items: center;
+}
+
+.skill i {
+    font-size: 60px;
+    margin-bottom: 10px;
+    color: var(--accent-color);
+    transition: transform 0.3s, color 0.3s;
+}
+
+.skill i:hover { transform: scale(1.2); color: #1f1fff; }
+
+.skill p {
+    font-size: 1rem;
+    margin-top: 10px;
+    color: var(--text-color);
+}
+
+@media (max-width: 768px) {
+    .skills-grid {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        gap: 20px;
+    }
+    .skill i { font-size: 50px; }
+    .skill p { font-size: 0.95rem; }
+}
+
+/* =======================
+   Footer
+======================= */
+footer {
+  background: #333;
+  color: #fff;
+  padding: 30px 0;
+  text-align: center;
+}
+
+footer p {
+  margin-bottom: 16px;
+  font-size: 0.95rem;
+}
+
+footer .social {
+  display: flex;
+  justify-content: center;
+  gap: 26px;
+}
+
+footer .social a img {
+  width: 42px;
+  height: 42px;
+  transition: transform 0.3s, filter 0.3s;
+  filter: invert(33%) sepia(94%) saturate(6131%) hue-rotate(219deg) brightness(97%) contrast(101%);
+}
+
+footer .social a:hover img {
+  transform: scale(1.2);
+  filter: invert(33%) sepia(94%) saturate(6131%) hue-rotate(219deg) brightness(120%) contrast(101%);
+}
+
+footer .social a:hover img {
+  transform: scale(1.2);
+  filter: brightness(1.3);
+}
