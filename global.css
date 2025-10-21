@@ -189,7 +189,7 @@ body.dark-mode .logo {
       display: flex;
       opacity: 1;
     }
-    nav ul li a, nav ul li .contact-btn {
+    nav ul li a, nav ul li {
       padding: 20px 0;
       font-size: 1.3rem;
       width: 100%;
@@ -336,6 +336,7 @@ body.dark-mode .logo {
     height: 32px;
   }
 }
+
 
 
 
