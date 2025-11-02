@@ -182,7 +182,6 @@ body.dark-mode .logo {
       z-index: 15;
     }
     body.dark-mode nav ul {
-      backdrop-filter: blur(15px);
       background:#0c2a3fe3;
     }
     nav ul.show {
@@ -194,6 +193,7 @@ body.dark-mode .logo {
       font-size: 1.3rem;
       width: 100%;
       text-align: center;
+      backdrop-filter: blur(15px);
     }
   }
  /* =======================
