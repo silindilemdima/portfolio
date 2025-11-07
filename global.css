@@ -146,12 +146,12 @@ body.dark-mode .logo {
     width: 20px;
     left: 3px;
     bottom: 3px;
-    background: var(--accent-color);
+    background: linear-gradient(to top, #1f1fff, #00b5db);
     transition: 0.3s;
     border-radius: 50%;
   }
   .toggle-btn input:checked + .slider {
-    background:linear-gradient(to top, #1f1fff, #00b5db);
+    background: #0c2a3f;
   }
   .toggle-btn input:checked + .slider:before {
     transform: translateX(24px);
@@ -374,4 +374,5 @@ footer .social a:hover img {
   transform: scale(1.2);
   filter: brightness(1.3);
 }
+
 
