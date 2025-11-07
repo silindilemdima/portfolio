@@ -108,14 +108,14 @@ body.dark-mode .logo {
     color: #fff;
   }
   nav ul li .contact-btn {
-    background: #1f1fff;
+    background: linear-gradient(to top, #1f1fff, #00b5db);
     color: #fff;
     padding: 10px 22px;
     border-radius: 30px;
     transition: transform 0.2s, background 0.2s, color 0.2s;
   }
   nav ul li .contact-btn:hover {
-    background: #FF499E;
+    background:linear-gradient(to top, #FF499E, #ff8868);
     color: #fff;
     transform: translateY(-2px) scale(1.05);
   }
@@ -151,7 +151,7 @@ body.dark-mode .logo {
     border-radius: 50%;
   }
   .toggle-btn input:checked + .slider {
-    background: #0c2a3f;
+    background:linear-gradient(to top, #1f1fff, #00b5db);
   }
   .toggle-btn input:checked + .slider:before {
     transform: translateX(24px);
@@ -374,3 +374,4 @@ footer .social a:hover img {
   transform: scale(1.2);
   filter: brightness(1.3);
 }
+
