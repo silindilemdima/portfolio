@@ -367,13 +367,14 @@ footer .social a img {
 
 footer .social a:hover img {
   transform: scale(1.2);
-  filter: invert(33%) sepia(94%) saturate(6131%) hue-rotate(219deg) brightness(120%) contrast(101%);
+  background:linear-gradient(to top, #FF499E, #ff8868);
 }
 
 footer .social a:hover img {
   transform: scale(1.2);
   filter: brightness(1.3);
 }
+
 
 
 
