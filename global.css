@@ -304,7 +304,8 @@ header {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 80px 100px 140px;
+  padding: clamp(60px, 8vw, 80px) clamp(12px, 4vw, 100px) clamp(100px, 12vw, 140px);
+  box-sizing: border-box;
 }
 
 /* Media Container */
@@ -320,7 +321,9 @@ header {
 #lightbox .lightbox-media img,
 #lightbox .lightbox-media video {
   max-width: 100%;
-  max-height: calc(100vh - 240px);
+  max-width: min(100vw - 24px, 100%);
+  max-height: calc(100vh - 180px);
+  max-height: calc(100dvh - 180px);
   width: auto;
   height: auto;
   object-fit: contain;
@@ -337,7 +340,9 @@ header {
 }
 
 #lightbox .lightbox-media video {
-  max-height: calc(100vh - 240px);
+  max-height: calc(100vh - 180px);
+  max-height: calc(100dvh - 180px);
+  max-width: min(100vw - 24px, 100%);
   border-radius: 0;
 }
 
@@ -500,13 +505,32 @@ header {
    Lightbox Responsive
 ======================= */
 @media (max-width: 768px) {
+  #lightbox {
+    padding: 0;
+  }
+
   #lightbox .lightbox-main {
-    padding: 60px 20px 120px;
+    padding: 50px 12px 100px;
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+    max-width: 100vw;
+  }
+
+  #lightbox .lightbox-media {
+    width: 100%;
+    max-width: 100vw;
+    padding: 0 8px;
+    box-sizing: border-box;
   }
 
   #lightbox .lightbox-media img,
   #lightbox .lightbox-media video {
-    max-height: calc(100vh - 200px);
+    max-width: calc(100vw - 16px);
+    max-height: calc(100vh - 160px);
+    max-height: calc(100dvh - 160px);
+    width: auto !important;
+    height: auto !important;
   }
 
   .lightbox-arrow {
@@ -516,31 +540,31 @@ header {
   }
 
   .lightbox-arrow.left {
-    left: 16px;
+    left: 8px;
   }
 
   .lightbox-arrow.right {
-    right: 16px;
+    right: 8px;
   }
 
   .lightbox-close {
-    top: 20px;
-    right: 20px;
+    top: 12px;
+    right: 12px;
     width: 40px;
     height: 40px;
     font-size: 24px;
   }
 
   .lightbox-counter {
-    top: 20px;
-    left: 20px;
-    font-size: 12px;
+    top: 12px;
+    left: 12px;
+    font-size: 11px;
     padding: 6px 12px;
   }
 
   #lightbox-thumbs {
-    height: 100px;
-    padding: 16px 20px;
+    height: 90px;
+    padding: 12px 8px;
     gap: 6px;
   }
 
@@ -552,36 +576,70 @@ header {
 
 @media (max-width: 480px) {
   #lightbox .lightbox-main {
-    padding: 50px 12px 100px;
+    padding: 40px 8px 90px;
+  }
+
+  #lightbox .lightbox-media {
+    padding: 0 4px;
   }
 
   #lightbox .lightbox-media img,
   #lightbox .lightbox-media video {
-    max-height: calc(100vh - 180px);
+    max-width: calc(100vw - 8px);
+    max-height: calc(100vh - 140px);
+    max-height: calc(100dvh - 140px);
   }
 
   .lightbox-arrow {
-    width: 40px;
-    height: 40px;
-    font-size: 18px;
+    width: 36px;
+    height: 36px;
+    font-size: 16px;
   }
 
   .lightbox-arrow.left {
-    left: 12px;
+    left: 4px;
   }
 
   .lightbox-arrow.right {
-    right: 12px;
+    right: 4px;
+  }
+
+  .lightbox-close {
+    top: 8px;
+    right: 8px;
+    width: 36px;
+    height: 36px;
+    font-size: 20px;
+  }
+
+  .lightbox-counter {
+    top: 8px;
+    left: 8px;
+    font-size: 10px;
+    padding: 4px 10px;
   }
 
   #lightbox-thumbs {
     height: 80px;
-    padding: 12px;
+    padding: 10px 4px;
   }
 
   #lightbox-thumbs img {
     width: 50px;
     height: 38px;
+  }
+}
+
+/* Prevent zoom on mobile when lightbox is open */
+@media (max-width: 768px) {
+  #lightbox.active {
+    touch-action: pan-y;
+  }
+
+  #lightbox.active body {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
   }
 }
 
@@ -732,15 +790,34 @@ footer .social {
   gap: 18px;
 }
 
+footer .social a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  transition: all 0.3s ease;
+}
+
+footer .social a:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-4px) scale(1.1);
+}
+
 footer .social a img {
-  width: 38px;
-  height: 38px;
-  transition: transform 0.3s, filter 0.3s;
-  filter: drop-shadow(0 8px 20px rgba(0,0,0,0.45));
-  opacity:0.9;
+  width: 40px;
+  height: 40px;
+  transition: transform 0.3s ease, filter 0.3s ease;
+  filter: brightness(1.4) contrast(1.1) drop-shadow(0 2px 8px rgba(255,255,255,0.4));
+  opacity: 1;
+  display: block;
 }
 
 footer .social a:hover img {
-  transform: translateY(-4px) scale(1.15);
-  opacity:1;
+  transform: scale(1.1);
+  filter: brightness(1.6) contrast(1.2) drop-shadow(0 4px 12px rgba(255,255,255,0.6));
 }

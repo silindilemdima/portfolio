@@ -68,6 +68,12 @@ projectCards.forEach((card) => {
 });
 
 function openLightbox() {
+    // Prevent body scroll on mobile when lightbox is open
+    if (window.innerWidth <= 768) {
+        document.body.style.overflow = 'hidden';
+        document.body.style.position = 'fixed';
+        document.body.style.width = '100%';
+    }
     updateLightboxContent();
 }
 
@@ -170,6 +176,12 @@ function showNextItem() {
 
 function closeLightbox() {
     lightbox.classList.remove('active');
+    // Restore body scroll on mobile
+    if (window.innerWidth <= 768) {
+        document.body.style.overflow = '';
+        document.body.style.position = '';
+        document.body.style.width = '';
+    }
 }
 
 // Close lightbox by clicking outside
