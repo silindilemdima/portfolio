@@ -15,32 +15,103 @@
   <link rel="stylesheet" href="global.css">
   
   <style>
-
 /* =======================
-   Hero
+   Projects Hero - Modern
 ======================= */
 .projects-hero {
   text-align: center;
-  padding: 100px 0 40px;
-  background: var(--card-bg);
+  padding: clamp(120px, 15vw, 180px) 0 clamp(60px, 8vw, 100px);
+  background: var(--hero-bg);
   color: var(--text-color);
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.projects-hero::before {
+  content: "";
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  top: -150px;
+  right: -200px;
+  background: radial-gradient(circle, rgba(127,95,255,0.4), rgba(40,208,195,0.3), transparent 70%);
+  filter: blur(60px);
+  z-index: 0;
+  animation: float 20s ease-in-out infinite;
+}
+
+.projects-hero::after {
+  content: "";
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  bottom: -100px;
+  left: -150px;
+  background: radial-gradient(circle, rgba(255,73,158,0.3), rgba(102,170,255,0.2), transparent 70%);
+  filter: blur(50px);
+  z-index: 0;
+  animation: float 25s ease-in-out infinite reverse;
+}
+
+@keyframes float {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(30px, -30px) scale(1.1); }
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.projects-hero .container {
+  position: relative;
+  z-index: 1;
 }
 
 .projects-hero h1 {
-  font-size: 2.5rem;
-  margin-bottom: 10px;
+  font-size: clamp(3rem, 7vw, 5rem);
+  margin-bottom: 24px;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1.1;
+  background: linear-gradient(135deg, var(--hero-text-color) 0%, var(--accent-color) 50%, var(--accent-contrast) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  background-size: 200% 200%;
+  animation: gradientShift 8s ease infinite;
+  position: relative;
+}
+
+.projects-hero h1::after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+  border-radius: 2px;
 }
 
 .projects-hero p {
-  font-size: 1.1rem;
-  color: var(--text-color);
+  font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+  color: var(--text-muted);
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.7;
+  font-weight: 400;
 }
 
 /* =======================
    Filter Bar
 ======================= */
 .projects-filter {
-  padding: 20px 0;
+  padding: clamp(30px, 4vw, 50px) 0;
+  background: transparent;
 }
 
 .filter-bar {
@@ -51,75 +122,72 @@
   flex-wrap: wrap;
 }
 
-.filter-btn {
-  background: transparent;
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  padding: 8px 14px;
-  border-radius: 999px;
-  cursor: pointer;
-  color: var(--text);
-  font-weight: 500;
-  transition: all 0.18s ease;
-}
-
-.filter-btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
-}
-
-.filter-btn.active {
-  color: var(--accent);
-  border-color: rgba(31, 31, 255, 0.18);
-  box-shadow: 0 8px 24px rgba(31, 31, 255, 0.06);
-  transform: none;
-}
+/* Filter buttons use global .btn style from global.css */
 
 /* =======================
    Gallery Grid
 ======================= */
 .project-gallery {
-  padding: 60px 0 100px;
+  padding: clamp(40px, 6vw, 80px) 0 clamp(60px, 8vw, 100px);
 }
 
 .project-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 28px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: clamp(24px, 4vw, 36px);
 }
 
 /* =======================
-   Project Card
+   Project Card - Modern Style
 ======================= */
 .project-card {
   background: var(--card-bg);
-  border-radius: 14px;
+  border: 1px solid var(--card-border);
+  border-radius: 24px;
   overflow: hidden;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
-  transition: transform 0.28s ease, box-shadow 0.28s ease;
+  box-shadow: 0 25px 70px rgba(15,23,42,0.12);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s ease, border-color 0.3s ease;
   display: flex;
   flex-direction: column;
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
+  position: relative;
+}
+
+.project-card::after {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  border-radius: 23px;
+  border: 1px solid rgba(255,255,255,0.1);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.project-card:hover::after {
+  opacity: 1;
 }
 
 .project-card:focus {
-  outline: 3px solid rgba(31, 31, 255, 0.12);
+  outline: 3px solid rgba(127,95,255,0.3);
   outline-offset: 4px;
 }
 
 .project-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.12);
+  transform: translateY(-10px);
+  box-shadow: 0 35px 90px rgba(9,12,46,0.25);
+  border-color: var(--accent-color);
 }
 
 /* Thumbnail */
 .project-thumb {
   width: 100%;
   height: 0;
-  padding-bottom: 56%;
+  padding-bottom: 65%;
   position: relative;
   overflow: hidden;
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.02), rgba(0, 0, 0, 0.03));
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.02), rgba(0, 0, 0, 0.05));
 }
 
 .project-thumb img {
@@ -128,109 +196,68 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.5s ease;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .project-card:hover .project-thumb img {
-  transform: scale(1.06);
+  transform: scale(1.08);
 }
 
 /* Card Body */
 .project-body {
-  padding: 16px;
+  padding: 24px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
   flex: 1;
 }
 
 .project-body h3 {
-  font-size: 1.15rem;
+  font-size: 1.25rem;
   margin: 0;
-  color: var(--text);
+  color: var(--hero-text-color);
+  font-weight: 600;
+  letter-spacing: -0.01em;
 }
 
 .project-body p {
   margin: 0;
-  color:var(--text-color);
+  color: var(--text-muted);
   font-size: 0.95rem;
+  line-height: 1.6;
 }
 
-/* =======================
-   Lightbox Styles
-======================= */
-.lightbox {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.9);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 9999;
+/* Fade-slide Animation */
+.fade-slide {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
-.lightbox-content {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  max-width: 90%;
-  max-height: 80%;
-}
-
-.lb-img {
-  max-width: 80vw;
-  max-height: 80vh;
-  object-fit: contain;
-  border-radius: 8px;
-  box-shadow: 0 0 20px rgba(255,255,255,0.2);
-}
-
-.lightbox-arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 3rem;
-  color: white;
-  cursor: pointer;
-  user-select: none;
-  padding: 10px;
-  transition: 0.3s;
-}
-
-.lightbox-arrow:hover {
-  color: #1f1fff;
-}
-
-.lightbox-arrow.left { left: 5%; }
-.lightbox-arrow.right { right: 5%; }
-
-.lightbox-close {
-  position: absolute;
-  top: 20px;
-  right: 30px;
-  font-size: 2rem;
-  color: white;
-  cursor: pointer;
-  user-select: none;
-  transition: 0.3s;
-}
-
-.lightbox-close:hover {
-  color: linear-gradient(to top, #1f1fff, #00b5db);
+.fade-slide.show {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* Responsive */
 @media (max-width: 768px) {
-  .lb-img {
-    max-width: 95vw;
-    max-height: 75vh;
+  .project-grid {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
   }
-  .lightbox-arrow {
-    font-size: 2rem;
+
+  .project-body {
+    padding: 20px;
+  }
+
+  .project-body h3 {
+    font-size: 1.15rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .project-grid {
+    grid-template-columns: 1fr;
   }
 }
   </style>
@@ -258,33 +285,34 @@
     </div>
   </header>
   
-  <!-- Hero -->
-  <section class="projects-hero">
-    <div class="container">
-      <h1>My Projects</h1>
-      <p>Some of my recent works and designs — filter by category to explore.</p>
-    </div>
-  </section>
-
-  <!-- Filter Bar -->
-  <section class="projects-filter">
-    <div class="container">
-      <div class="filter-bar" role="tablist" aria-label="Project filters">
-        <button class="filter-btn active" data-filter="all" aria-pressed="true">All</button>
-        <button class="filter-btn" data-filter="branding" aria-pressed="false">Branding</button>
-        <button class="filter-btn" data-filter="web" aria-pressed="false">Web Design</button>
-        <button class="filter-btn" data-filter="social" aria-pressed="false">Social Media</button>
+  <main>
+    <!-- Hero -->
+    <section class="projects-hero">
+      <div class="container">
+        <h1 class="fade-slide">My Projects</h1>
+        <p class="fade-slide">A curated collection of branding, web design, and social media work — filter by category to explore.</p>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Gallery -->
-  <section class="project-gallery">
+    <!-- Filter Bar -->
+    <section class="projects-filter">
+      <div class="container">
+        <div class="filter-bar" role="tablist" aria-label="Project filters">
+          <button class="filter-btn active fade-slide" data-filter="all" aria-pressed="true">All</button>
+          <button class="filter-btn fade-slide" data-filter="branding" aria-pressed="false">Branding</button>
+          <button class="filter-btn fade-slide" data-filter="web" aria-pressed="false">Web Design</button>
+          <button class="filter-btn fade-slide" data-filter="social" aria-pressed="false">Social Media</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery -->
+    <section class="project-gallery">
     <div class="container">
       <div class="project-grid">
 
         <!-- Existing project cards -->
-        <article class="project-card" data-category="branding" tabindex="0" aria-label="Open Nelo Pharmary project">
+        <article class="project-card fade-slide" data-category="branding" tabindex="0" aria-label="Open Nelo Pharmary project">
           <div class="project-thumb">
             <img src="Images/Nelomed pharmary - Logo_Logo.jpg" alt="Nelo Pharmary thumbnail">
           </div>
@@ -293,9 +321,6 @@
             <p>Community-focused brand identity with bold, trust-building visuals.</p>
           </div>
           <div class="project-images" style="display:none">
-                          <img src="Images/Nelomed pharmary - Logo_Logo.jpg" alt="Nelo Image 1">
-                        <img src="Images/Nelo Pharmarcy-01.jpg" alt="Nelo Image 2">
-                        <img src="Images/Nelo Pharmarcy-02.jpg" alt="Nelo Image 3">
             <img src="Images/Nelo Pharmarcy-03.jpg" alt="Nelo Image 4">
                 <img src="Images/Nelo Pharmarcy-05.jpg" alt="Nelo Image 5">
                 <img src="Images/Nelo Pharmarcy-06.jpg" alt="Nelo Image 6">
@@ -306,7 +331,7 @@
           </div>
         </article>
 
-        <article class="project-card" data-category="branding" tabindex="0" aria-label="Open Momo's Hair Corner project">
+        <article class="project-card fade-slide" data-category="branding" tabindex="0" aria-label="Open Momo's Hair Corner project">
           <div class="project-thumb">
             <img src="Images/Momo's Hair SalonFull Logo-100.jpg" alt="Momo's Hair Corner thumbnail">
           </div>
@@ -328,7 +353,7 @@
           </div>
         </article>
 
-        <article class="project-card" data-category="branding" tabindex="0" aria-label="Open Good Governance project">
+        <article class="project-card fade-slide" data-category="branding" tabindex="0" aria-label="Open Good Governance project">
           <div class="project-thumb">
             <img src="Images/Good Governance_Logo-01.jpg" alt="Good Governance thumbnail">
           </div>
@@ -346,7 +371,7 @@
           </div>
         </article>
 
-        <article class="project-card" data-category="branding" tabindex="0" aria-label="Open Ubuntu-Botho Financial Services project">
+        <article class="project-card fade-slide" data-category="branding" tabindex="0" aria-label="Open Ubuntu-Botho Financial Services project">
           <div class="project-thumb">
             <img src="Images/Ubuntu-Botho Financial Services_Logo .jpg" alt="Ubuntu-Botho thumbnail">
           </div>
@@ -365,7 +390,7 @@
         </article>
 
         <!-- New 4 project cards -->
-        <article class="project-card" data-category="branding" tabindex="0" aria-label="Open Project 1">
+        <article class="project-card fade-slide" data-category="branding" tabindex="0" aria-label="Open Project 1">
           <div class="project-thumb">
             <img src="Images/Something Property Logo (1).jpg" alt="Project 1 thumbnail">
           </div>
@@ -383,7 +408,7 @@
           </div>
         </article>
 
-        <article class="project-card" data-category="branding" data-category="social" tabindex="0" aria-label="Open Project 2">
+        <article class="project-card fade-slide" data-category="branding social" tabindex="0" aria-label="Open Project 2">
           <div class="project-thumb">
             <img src="Images/Yabantu Networks logo.jpg" alt="Project 2 thumbnail">
           </div>
@@ -408,7 +433,7 @@
           </div>
         </article>
 
-        <article class="project-card" data-category="social" tabindex="0" aria-label="Open Project 3">
+        <article class="project-card fade-slide" data-category="social" tabindex="0" aria-label="Open Project 3">
           <div class="project-thumb">
             <img src="Images/FazMedia_Logo_Clearback.jpg" alt="Project 3 thumbnail">
           </div>
@@ -433,7 +458,7 @@
           </div>
         </article>
 
-        <article class="project-card" data-category="social" tabindex="0" aria-label="Open Project 4">
+        <article class="project-card fade-slide" data-category="social" tabindex="0" aria-label="Open Project 4">
           <div class="project-thumb">
             <img src="Images/Logo.jpg" alt="Project 4 thumbnail">
           </div>
@@ -457,14 +482,13 @@
       </div>
     </div>
   </section>
+  </main>
 
-
-  <!-- Lightbox (will be created dynamically by JS) -->
   <!-- Footer -->
  <footer>
   <div class="container fade-slide">
     <p>&copy; 2025 Silindile Kunene. All rights reserved.</p>
-    <p>Updated November 2025</p>
+    <p>Updated December 2025</p>
     <div class="social fade-slide">
       <a href="https://www.linkedin.com/in/silindile-kunene-6a15b4355/" target="_blank" aria-label="LinkedIn">
         <img src="Icons/icons8-linkedin-50.png" alt="LinkedIn">

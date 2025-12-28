@@ -11,95 +11,299 @@
     <meta property="og:image" content="https://silindilemdima.github.io/portfolio/Images/profile picture.jpg">
     <meta property="og:url" content="https://silindilemdima.github.io/portfolio/">
     <meta property="og:type" content="website">
-  
+
   <link rel="stylesheet" href="global.css" />
   <style>
     /* ==========================
-       Contact Hero
+       Contact Hero - Modern
     ========================== */
     .contact-hero {
       text-align: center;
-      padding: 100px 0;
-      background: var(--card-bg);
+      padding: clamp(120px, 15vw, 180px) 0 clamp(60px, 8vw, 100px);
+      background: var(--hero-bg);
       color: var(--text-color);
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
     }
+
+    .contact-hero::before {
+      content: "";
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      top: -150px;
+      right: -200px;
+      background: radial-gradient(circle, rgba(127,95,255,0.4), rgba(40,208,195,0.3), transparent 70%);
+      filter: blur(60px);
+      z-index: 0;
+      animation: float 20s ease-in-out infinite;
+    }
+
+    .contact-hero::after {
+      content: "";
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      bottom: -100px;
+      left: -150px;
+      background: radial-gradient(circle, rgba(255,73,158,0.3), rgba(102,170,255,0.2), transparent 70%);
+      filter: blur(50px);
+      z-index: 0;
+      animation: float 25s ease-in-out infinite reverse;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(30px, -30px) scale(1.1); }
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .contact-hero .container {
+      position: relative;
+      z-index: 1;
+    }
+
     .contact-hero h1 {
-      font-size: 2.5rem;
-      margin-bottom: 20px;
+      font-size: clamp(3rem, 7vw, 5rem);
+      margin-bottom: 24px;
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      line-height: 1.1;
+      background: linear-gradient(135deg, var(--hero-text-color) 0%, var(--accent-color) 50%, var(--accent-contrast) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      background-size: 200% 200%;
+      animation: gradientShift 8s ease infinite;
+      position: relative;
     }
+
+    .contact-hero h1::after {
+      content: "";
+      position: absolute;
+      bottom: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+      border-radius: 2px;
+    }
+
     .contact-hero p {
-      font-size: 1.2rem;
+      font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+      color: var(--text-muted);
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.7;
+      font-weight: 400;
     }
 
     /* ==========================
-       Contact Form
+       Contact Form - Modern
     ========================== */
     .contact-form {
-      padding: 80px 0;
+      padding: clamp(60px, 8vw, 100px) 0;
       text-align: center;
     }
+
     .contact-form form {
       display: flex;
       flex-direction: column;
-      gap: 15px;
-      max-width: 500px;
+      gap: 20px;
+      max-width: 600px;
       margin: 0 auto;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 24px;
+      padding: clamp(32px, 5vw, 48px);
+      box-shadow: 0 25px 70px rgba(15,23,42,0.12);
+      backdrop-filter: blur(10px);
+      position: relative;
+      overflow: hidden;
     }
+
+    .contact-form form::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent-color), var(--accent-contrast));
+      opacity: 0.6;
+    }
+
     .contact-form input,
     .contact-form textarea {
-      padding: 10px;
-      border: 1px solid #ddd;
-      border-radius: 5px;
+      padding: 16px 20px;
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
       font-size: 1rem;
-      background: var(--card-bg);
+      font-family: "Space Grotesk", sans-serif;
+      background: var(--bg-color);
       color: var(--text-color);
+      transition: all 0.3s ease;
+      width: 100%;
+      box-sizing: border-box;
     }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      outline: none;
+      border-color: var(--accent-color);
+      box-shadow: 0 0 0 3px rgba(127,95,255,0.1);
+      transform: translateY(-2px);
+    }
+
     .contact-form input::placeholder,
     .contact-form textarea::placeholder {
-      color: var(--text-color);
+      color: var(--text-muted);
+      opacity: 0.7;
     }
+
+    .contact-form textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
     .contact-form button {
-      padding: 12px;
-      background: var(--text-color);
-      color: var(--bg-color);
+      padding: 14px 30px;
+      background: linear-gradient(to top, #1f1fff, #00b5db);
+      color: #fff;
       border: none;
-      border-radius: 5px;
+      border-radius: 30px;
+      font-size: 1rem;
+      font-weight: 500;
+      font-family: "Space Grotesk", sans-serif;
       cursor: pointer;
-      transition: 0.3s;
+      transition: transform 0.2s ease, background 0.2s ease;
+      margin-top: 8px;
     }
+
     .contact-form button:hover {
-      color: var(--text-color);
-      background: var(--accent-color);
+      transform: translateY(-2px) scale(1.05);
+      background: linear-gradient(to top, #FF499E, #ff8868);
     }
-    .contact-form a {
-      color: var(--text-color);
+
+    .contact-form button:active {
+      transform: translateY(0) scale(1);
     }
+
+    .contact-form .direct-email {
+      margin-top: 40px;
+      padding-top: 32px;
+      border-top: 1px solid var(--card-border);
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
     .contact-form .direct-email a {
+      color: var(--accent-color);
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      display: inline-block;
+      padding: 4px 8px;
+      border-radius: 6px;
+    }
+
+    .contact-form .direct-email a:hover {
+      color: var(--accent-contrast);
+      background: rgba(127,95,255,0.1);
+      transform: translateY(-2px);
+    }
+
+    /* Contact Info Section */
+    .contact-info {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 24px;
+      max-width: 800px;
+      margin: 60px auto 0;
+      padding: 0 20px;
+    }
+
+    .contact-info-item {
+      text-align: center;
+      padding: 24px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      transition: all 0.3s ease;
+    }
+
+    .contact-info-item:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 15px 40px rgba(15,23,42,0.12);
+      border-color: var(--accent-color);
+    }
+
+    .contact-info-item h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--hero-text-color);
+      margin-bottom: 8px;
+    }
+
+    .contact-info-item p,
+    .contact-info-item a {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .contact-info-item a:hover {
       color: var(--accent-color);
     }
 
-    /* ==========================
-       Animate on scroll
-    ========================== */
-    .animate-on-scroll {
+    /* Fade-slide Animation */
+    .fade-slide {
       opacity: 0;
       transform: translateY(20px);
-      transition: all 0.8s ease;
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
     }
-    .animate-on-scroll.animated {
+
+    .fade-slide.show {
       opacity: 1;
       transform: translateY(0);
     }
 
     /* Success & Error messages */
     #form-status {
-      margin-top: 15px;
+      margin-top: 20px;
+      font-size: 1rem;
+      font-weight: 500;
+      padding: 12px 20px;
+      border-radius: 12px;
+      transition: all 0.3s ease;
     }
+
     #form-status.success {
       color: #00c851;
+      background: rgba(0, 200, 81, 0.1);
+      border: 1px solid rgba(0, 200, 81, 0.2);
     }
+
     #form-status.error {
       color: #ff4444;
+      background: rgba(255, 68, 68, 0.1);
+      border: 1px solid rgba(255, 68, 68, 0.2);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .contact-form form {
+        padding: 28px 24px;
+        gap: 18px;
+      }
     }
   </style>
 </head>
@@ -126,38 +330,56 @@
     </div>
   </header>
 
-  <!-- Contact Hero -->
-  <section class="contact-hero">
-    <div class="container">
-      <h1>Contact Me</h1>
-      <p>Get in touch for collaborations or inquiries.</p>
-    </div>
-  </section>
+  <main>
+    <!-- Contact Hero -->
+    <section class="contact-hero">
+      <div class="container">
+        <h1 class="fade-slide">Contact Me</h1>
+        <p class="fade-slide">Get in touch for collaborations, inquiries, or just to say hello. I'd love to hear from you!</p>
+      </div>
+    </section>
 
-  <!-- Contact Form -->
-  <section class="contact-form">
-    <div class="container">
-      <form id="contact-form">
-        <input type="text" name="name" placeholder="Your Name" required />
-        <input type="email" name="email" placeholder="Your Email" required />
-        <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
-        <button type="submit">Send Message</button>
-      </form>
+    <!-- Contact Form -->
+    <section class="contact-form">
+      <div class="container">
+        <form id="contact-form" class="fade-slide">
+          <input type="text" name="name" placeholder="Your Name" required />
+          <input type="email" name="email" placeholder="Your Email" required />
+          <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+          <button type="submit">Send Message</button>
+        </form>
 
-      <p id="form-status"></p>
+        <p id="form-status"></p>
 
-      <!-- Optional direct email line -->
-      <p class="direct-email">
-        Or email me directly at
-        <a href="mailto:silindilemdima@gmail.com">silindilemdima@gmail.com</a>
-      </p>
-    </div>
-  </section>
+        <!-- Optional direct email line -->
+        <p class="direct-email fade-slide">
+          Or email me directly at
+          <a href="mailto:silindilemdima@gmail.com">silindilemdima@gmail.com</a>
+        </p>
+      </div>
+
+      <!-- Contact Info Cards -->
+      <div class="contact-info">
+        <div class="contact-info-item fade-slide">
+          <h3>Email</h3>
+          <a href="mailto:silindilemdima@gmail.com">silindilemdima@gmail.com</a>
+        </div>
+        <div class="contact-info-item fade-slide">
+          <h3>WhatsApp</h3>
+          <a href="https://wa.me/0814016273" target="_blank">+27 81 401 6273</a>
+        </div>
+        <div class="contact-info-item fade-slide">
+          <h3>Location</h3>
+          <p>South Africa</p>
+        </div>
+      </div>
+    </section>
+  </main>
 
   <footer>
     <div class="container fade-slide">
       <p>&copy; 2025 Silindile Kunene. All rights reserved.</p>
-      <p>Updated November 2025</p>
+      <p>Updated December 2025</p>
       <div class="social fade-slide">
         <a href="https://www.linkedin.com/in/silindile-kunene-6a15b4355/" target="_blank" aria-label="LinkedIn">
           <img src="Icons/icons8-linkedin-50.png" alt="LinkedIn" />
@@ -209,5 +431,3 @@
   <script src="main.js"></script>
 </body>
 </html>
-
-
